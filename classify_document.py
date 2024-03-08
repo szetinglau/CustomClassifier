@@ -7,7 +7,7 @@
 # --------------------------------------------------------------------------
 
 """
-FILE: sample_classify_document.py
+FILE: classify_document.py
 
 DESCRIPTION:
     This sample demonstrates how to classify a document using a trained document classifier.
@@ -17,7 +17,7 @@ DESCRIPTION:
     https://aka.ms/azsdk/formrecognizer/buildclassifiermodel
 
 USAGE:
-    python sample_classify_document.py
+    python classify_document.py
 
     Set the environment variables with your own values before running the sample:
     1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource
