@@ -7,7 +7,7 @@
 # --------------------------------------------------------------------------
 
 """
-FILE: sample_build_classifier.py
+FILE: build_classifier.py
 
 DESCRIPTION:
     This sample demonstrates how to build a classifier model. For this sample, you can use the training
@@ -17,7 +17,7 @@ DESCRIPTION:
     https://aka.ms/azsdk/formrecognizer/buildclassifiermodel
 
 USAGE:
-    python sample_build_classifier.py
+    python build_classifier.py
 
     Set the environment variables with your own values before running the sample:
     1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource.
@@ -26,7 +26,7 @@ USAGE:
 """
 
 
-def sample_build_classifier():
+def build_classifier():
     # [START build_classifier]
     import os
     from azure.ai.formrecognizer import (
@@ -52,18 +52,18 @@ def sample_build_classifier():
     poller = document_model_admin_client.begin_build_document_classifier(
         doc_types={
     # Commented out because of unsupported files
-    #        "IDCards": ClassifierDocumentTypeDetails(
-    #            source=BlobFileListSource(
-    #                container_url=container_sas_url, 
-    #                file_list="IDCards.jsonl"
-    #            )
-    #        ),
-    #        "DrivingLicense": ClassifierDocumentTypeDetails(
-    #            source=BlobFileListSource(
-    #                container_url=container_sas_url, 
-    #                file_list="DrivingLicense.jsonl"
-    #            )
-    #        ),
+           "IDCards": ClassifierDocumentTypeDetails(
+               source=BlobFileListSource(
+                   container_url=container_sas_url, 
+                   file_list="IDCards.jsonl"
+               )
+           ),
+           "DrivingLicense": ClassifierDocumentTypeDetails(
+               source=BlobFileListSource(
+                   container_url=container_sas_url, 
+                   file_list="DrivingLicense.jsonl"
+               )
+           ),
             "W9": ClassifierDocumentTypeDetails(
                 source=BlobFileListSource(
                     container_url=container_sas_url, 
@@ -127,4 +127,4 @@ def sample_build_classifier():
 
 
 if __name__ == "__main__":
-    sample_build_classifier()
+    build_classifier()
