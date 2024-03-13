@@ -29,7 +29,22 @@ Before running the scripts, you need to set up your environment variables. Renam
 - `TESTING_DOCUMENTS`: The path to your testing documents
 - `CLASSIFIER_ID`: The model ID of your Form Recognizer
 
-Please replace the placeholders with your actual values.
+Please replace the placeholders with your actual values.  
+<br/>
+Your `TRAINING_DOCUMENTS` folder should be structured as shown below:
+```
+📂trainingdata
+ ┣ 📂DocumentType1
+ ┃ ┣ 📜trainingFile1.ext
+ ┃ ┣ 📜trainingFile2.ext
+ ┃ ┣ 📜trainingFile3.ext
+ ┃ ┣ 📜trainingFile4.ext
+ ┃ ┣ 📜trainingFile5.ext
+ ┃ ┗ 📜...
+ ┣ 📂DocumentType2
+ ┣ 📂...
+```
+> For best results, ensure you include **AT LEAST** 5 training files for each type of document you wish to train the model on.
 
 ## Install packages
 
