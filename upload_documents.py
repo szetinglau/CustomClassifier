@@ -53,11 +53,11 @@ def upload_documents():
             dir_path = os.path.join(root, dir)
             for file in os.listdir(dir_path):
                 local_file_path = os.path.join(dir_path, file)
-                if file.endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".heif")):
+                if file.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".heif")):
                     # Check that image files are not corrupt and are at least 500x500 pixels
                     try:
                         img = Image.open(local_file_path)
-                        if img.height >= 500 and img.width >= 500:
+                        if img.height >= 50 and img.width >= 50:
                             upload_file_to_blob(local_file_path, local_directory, container_client, jsonl_data, container_name)
                         else:
                             incompatible_files.append(local_file_path)
