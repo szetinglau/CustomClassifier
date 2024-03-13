@@ -54,7 +54,7 @@ def upload_documents():
             for file in os.listdir(dir_path):
                 local_file_path = os.path.join(dir_path, file)
                 if file.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".heif")):
-                    # Check that image files are not corrupt and are at least 500x500 pixels
+                    # Check that image files are not corrupt and are at least 50x50 pixels
                     try:
                         img = Image.open(local_file_path)
                         if img.height >= 50 and img.width >= 50:
