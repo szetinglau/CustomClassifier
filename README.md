@@ -33,7 +33,7 @@ Please replace the placeholders with your actual values.
 <br/>
 Your `TRAINING_DOCUMENTS` folder should be structured as shown below:
 ```
-📂trainingdata
+📂TRAINING_DOCUMENTS
  ┣ 📂DocumentType1
  ┃ ┣ 📜trainingFile1.ext
  ┃ ┣ 📜trainingFile2.ext
