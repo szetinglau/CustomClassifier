@@ -103,7 +103,7 @@ def build_classifier():
             "ContactCard": ClassifierDocumentTypeDetails(
                 source=BlobFileListSource(
                     container_url=container_sas_url, 
-                    file_list="ContactCards.jsonl"
+                    file_list="ContactCard.jsonl"
                 )
             ),
             "StickyNotes": ClassifierDocumentTypeDetails(

@@ -53,7 +53,7 @@ def upload_documents():
             dir_path = os.path.join(root, dir)
             for file in os.listdir(dir_path):
                 local_file_path = os.path.join(dir_path, file)
-                if file.endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".heif")):
+                if file.endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".heif", ".PNG", ".JPG", ".JPEG", ".BMP", ".TIFF", ".HEIF")):
                     # Check that image files are not corrupt and are at least 500x500 pixels
                     try:
                         img = Image.open(local_file_path)

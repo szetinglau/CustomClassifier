@@ -28,16 +28,6 @@ USAGE:
        with your training files. A document classifier will be built and used to run the sample.
 """
 
-from azure.core.credentials import AzureKeyCredential
-from azure.ai.formrecognizer import ( 
-        DocumentAnalysisClient,
-        DocumentModelAdministrationClient,
-        ClassifierDocumentTypeDetails,
-        BlobSource,
-        BlobFileListSource
-    )
-from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
-from azure.ai.documentintelligence import DocumentIntelligenceClient
 from dotenv import load_dotenv
 import logging, json, os, time
 from requests import post, get
@@ -165,6 +155,7 @@ if __name__ == "__main__":
             "For more information about troubleshooting errors, see the following guide: "
             "https://aka.ms/azsdk/python/formrecognizer/troubleshooting"
         )
+        
         # Examples of how to check an HttpResponseError
         # Check by error code:
         if error.error is not None:
