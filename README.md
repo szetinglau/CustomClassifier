@@ -22,7 +22,6 @@ Before running the scripts, you need to set up your environment variables. Renam
 
 - `AZURE_FORM_RECOGNIZER_ENDPOINT`: The endpoint to your Form Recognizer resource.
 - `AZURE_FORM_RECOGNIZER_KEY`: Your Form Recognizer API key.
-- `AZURE_STORAGE_CONTAINER_SAS_URL`: The shared access signature (SAS) URL of your Azure Blob Storage container.
 - `AZURE_STORAGE_CONNECTION_STRING`: The connection string to your Azure Storage service
 - `AZURE_STORAGE_CONTAINER_NAME`: The name of your Azure Blob Storage container
 - `TRAINING_DOCUMENTS`: The path to your training documents
@@ -59,7 +58,7 @@ This script uses the Document Intelligence layout model to analyze your training
 These files are saved locally alongside your training data files and will be uploaded when running the upload_documents.py script.
 
 ```bash
-python upload_documents.py
+python analyze_layout.py
 ```
 
 ### upload_documents.py
