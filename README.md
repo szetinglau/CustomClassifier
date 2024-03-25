@@ -1,10 +1,11 @@
 # Implementing Custom Classification Model in Document Intelligence
 
-This codebase provides an example implementation of a custom classification model in 3 steps:
+This codebase provides an example implementation of a custom classification model in 4 steps:
 
-- Document Ingestion
-- Build Classifier
-- Classify Documents
+- Document Preparation (_analyze_layout.py_)
+- Document Upload (_upload_documents.py_)
+- Build Classifier (_build_classifier.py_)
+- Classify Documents (_classify_document.py_)
 
 ## Prerequisites
 
