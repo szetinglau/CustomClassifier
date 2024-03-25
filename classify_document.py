@@ -23,9 +23,6 @@ USAGE:
     1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource
     2) AZURE_FORM_RECOGNIZER_KEY - your Form Recognizer API key
     3) CLASSIFIER_ID - the ID of your trained document classifier
-        -OR-
-       CLASSIFIER_CONTAINER_SAS_URL - The shared access signature (SAS) Url of your Azure Blob Storage container
-       with your training files. A document classifier will be built and used to run the sample.
 """
 
 from dotenv import load_dotenv

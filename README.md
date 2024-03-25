@@ -44,13 +44,22 @@ Your `TRAINING_DOCUMENTS` folder should be structured as shown below:
  ┣ 📂DocumentType2
  ┣ 📂...
 ```
-> For best results, ensure you include **AT LEAST** 5 training files for each type of document you wish to train the model on.
+> You must include **AT LEAST** 5 training files for each type of document you wish to train the model on.
 
 ## Install packages
 
 Install the required modules
 ```bash
 pip install -r requirements.txt
+```
+
+### analyze_layout.py
+
+This script uses the Document Intelligence layout model to analyze your training files and create corresponding .ocr.json files.
+These files are saved locally alongside your training data files and will be uploaded when running the upload_documents.py script.
+
+```bash
+python upload_documents.py
 ```
 
 ### upload_documents.py

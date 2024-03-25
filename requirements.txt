@@ -1,5 +1,4 @@
-azure-storage-blob
-python-dotenv
 azure.ai.documentintelligence
 azure-identity
-Pillow
+azure.storage.blob
+python-dotenv
