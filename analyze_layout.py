@@ -83,7 +83,7 @@ def analyze_layout():
 
 def create_ocr_json(ocr_json_file_path, raw_response):
 # [START create_ocr_json]
-    with open(ocr_json_file_path, "w") as f:
+    with open(ocr_json_file_path, "w", encoding="utf-8") as f:
         f.write(raw_response.http_response.body().decode("utf-8"))
         print(f"\tOutput saved to {ocr_json_file_path}")
 # [END create_ocr_json]
