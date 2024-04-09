@@ -21,8 +21,8 @@ USAGE:
     python analyze_layout.py
 
     Set the environment variables with your own values before running the sample:
-    1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource.
-    2) AZURE_FORM_RECOGNIZER_KEY - your Form Recognizer API key
+    1) AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT - the endpoint to your Document Intelligence resource.
+    2) AZURE_DOCUMENT_INTELLIGENCE_KEY - your Document Intelligence API key
     3) TRAINING_DOCUMENTS - The local directory containing your training documents to be analyzed
 """
 
@@ -30,8 +30,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env.
 
-endpoint = os.environ["AZURE_FORM_RECOGNIZER_ENDPOINT"]
-key = os.environ["AZURE_FORM_RECOGNIZER_KEY"]
+endpoint = os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"]
+key = os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"]
 local_directory = os.environ["TRAINING_DOCUMENTS"]
 
 def analyze_layout():
@@ -80,7 +80,7 @@ def analyze_layout():
 
 def create_ocr_json(ocr_json_file_path, raw_response):
 # [START create_ocr_json]
-    with open(ocr_json_file_path, "w") as f:
+    with open(ocr_json_file_path, "w", encoding="utf-8") as f:
         f.write(raw_response.http_response.body().decode("utf-8"))
         print(f"\tOutput saved to {ocr_json_file_path}")
 # [END create_ocr_json]
