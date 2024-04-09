@@ -28,12 +28,17 @@ USAGE:
 """
 
 import os
-from azure.ai.formrecognizer import DocumentModelAdministrationClient, ClassifierDocumentTypeDetails, BlobFileListSource
+from azure.ai.documentintelligence import DocumentIntelligenceAdministrationClient
+from azure.ai.documentintelligence.models import (
+                AzureBlobFileListContentSource,
+                ClassifierDocumentTypeDetails,
+                BuildDocumentClassifierRequest,
+            )
 from azure.core.credentials import AzureKeyCredential
 from azure.storage.blob import BlobServiceClient, ContainerSasPermissions, generate_container_sas
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
-
+import uuid
 load_dotenv()  # take environment variables from .env.
 
 def build_classifier():
@@ -41,9 +46,12 @@ def build_classifier():
     document_model_admin_client, container_client = create_clients()
     container_sas_url = create_container_sas_url(container_client)
 
-    poller = document_model_admin_client.begin_build_document_classifier(
-        doc_types= get_doctypes(container_client, container_sas_url),
-        description=os.environ["CLASSIFIER_DESCRIPTION"],
+    poller = document_model_admin_client.begin_build_classifier(
+        BuildDocumentClassifierRequest(
+            classifier_id=str(uuid.uuid4()),
+            doc_types= get_doctypes(container_client, container_sas_url),
+        )
+        #description=os.environ["CLASSIFIER_DESCRIPTION"]
     )
     result = poller.result()
     print_classifier_results(result)
@@ -56,10 +64,10 @@ def create_clients():
     connect_str = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
     container_name = os.environ["AZURE_STORAGE_CONTAINER_NAME"]
 
-    document_model_admin_client = DocumentModelAdministrationClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+    document_model_admin_client = DocumentIntelligenceAdministrationClient(endpoint=endpoint, credential=AzureKeyCredential(key))
     blob_service_client = BlobServiceClient.from_connection_string(connect_str)
     container_client = blob_service_client.get_container_client(container_name)
-
+    
     return document_model_admin_client, container_client
 # [END create_clients]
 
@@ -76,7 +84,7 @@ def get_doctypes(container_client, container_sas_url):
 
     for doc_type in doc_types_list:
         doc_types[doc_type] = ClassifierDocumentTypeDetails(
-            source=BlobFileListSource(
+            azure_blob_file_list_source=AzureBlobFileListContentSource(
                 container_url=container_sas_url, 
                 file_list=f"{doc_type}.jsonl"
             )
@@ -114,9 +122,9 @@ def print_classifier_results(result):
     print(f"API version used to build the classifier model: {result.api_version}")
     print(f"Classifier description: {result.description}")
     print(f"Document classes used for training the model:")
-    for doc_type, details in result.doc_types.items():
+    for doc_type in result.doc_types.items():
         print(f"Document type: {doc_type}")
-        print(f"Container source: {details.source.container_url}\n")
+        \
 # [START print_classifier_results]
         
 if __name__ == "__main__":
