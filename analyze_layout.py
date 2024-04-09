@@ -16,9 +16,6 @@ DESCRIPTION:
     of the batch process. This script should be run before using the upload_documents.py script to upload documents to your
     azure storage container.
 
-    Note that selection marks returned from begin_analyze_document(model_id="prebuilt-layout") do not return the text
-    associated with the checkbox. For the API to return this information, build a custom model to analyze the
-    checkbox and its text. See build_model.py for more information.
 
 USAGE:
     python analyze_layout.py
@@ -40,10 +37,10 @@ local_directory = os.environ["TRAINING_DOCUMENTS"]
 def analyze_layout():
 # [START analyze_layout]
     from azure.core.credentials import AzureKeyCredential
-    from azure.ai.formrecognizer import DocumentAnalysisClient
+    from azure.ai.documentintelligence import DocumentIntelligenceClient
     from azure.core.exceptions import HttpResponseError
 
-    document_analysis_client = DocumentAnalysisClient(
+    document_intelligence_client = DocumentIntelligenceClient(
         endpoint=endpoint, credential=AzureKeyCredential(key)
     )
 
@@ -62,8 +59,8 @@ def analyze_layout():
                     try:
                         with open(document_file_path, "rb") as f:
                             # Use begin_analyze_document to start the analysis process, and use a callback in order to recieve the raw response
-                            poller = document_analysis_client.begin_analyze_document(
-                                "prebuilt-layout", document=f, cls=lambda raw_response, _, headers: create_ocr_json(ocr_json_file_path, raw_response)
+                            poller = document_intelligence_client.begin_analyze_document(
+                                "prebuilt-layout", analyze_request=f, content_type="application/octet-stream", cls=lambda raw_response, _, headers: create_ocr_json(ocr_json_file_path, raw_response)
                             )
                     except HttpResponseError as error:
                         print(f"Analysis of {file} failed: {error.error}\n\nSkipping to next file...")
