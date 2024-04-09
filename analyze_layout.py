@@ -21,8 +21,8 @@ USAGE:
     python analyze_layout.py
 
     Set the environment variables with your own values before running the sample:
-    1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource.
-    2) AZURE_FORM_RECOGNIZER_KEY - your Form Recognizer API key
+    1) AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT - the endpoint to your Document Intelligence resource.
+    2) AZURE_DOCUMENT_INTELLIGENCE_KEY - your Document Intelligence API key
     3) TRAINING_DOCUMENTS - The local directory containing your training documents to be analyzed
 """
 
@@ -30,8 +30,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env.
 
-endpoint = os.environ["AZURE_FORM_RECOGNIZER_ENDPOINT"]
-key = os.environ["AZURE_FORM_RECOGNIZER_KEY"]
+endpoint = os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"]
+key = os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"]
 local_directory = os.environ["TRAINING_DOCUMENTS"]
 
 def analyze_layout():

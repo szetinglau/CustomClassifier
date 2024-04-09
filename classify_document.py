@@ -14,14 +14,14 @@ DESCRIPTION:
     To learn how to build your custom classifier, see sample_build_classifier.py.
 
     More details on building a classifier and labeling your data can be found here:
-    https://aka.ms/azsdk/formrecognizer/buildclassifiermodel
+    https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/samples/sample_classify_document.py
 
 USAGE:
     python classify_document.py
 
     Set the environment variables with your own values before running the sample:
-    1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource
-    2) AZURE_FORM_RECOGNIZER_KEY - your Form Recognizer API key
+    1) AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT - the endpoint to your Form Recognizer resource
+    2) AZURE_DOCUMENT_INTELLIGENCE_KEY - your Form Recognizer API key
     3) CLASSIFIER_ID - the ID of your trained document classifier
 """
 
@@ -31,8 +31,8 @@ from requests import post, get
 
 load_dotenv()  # take environment variables from .env.
 
-FORM_RECOGNIZER_KEY = os.environ["AZURE_FORM_RECOGNIZER_KEY"]
-ENDPOINT = os.environ["AZURE_FORM_RECOGNIZER_ENDPOINT"]
+DOCUMENT_INTELLIGENCE_KEY = os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"]
+ENDPOINT = os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"]
 CLASSIFIER_ID = os.environ["CLASSIFIER_ID"]
 API_TYPE = "documentClassifiers"
 API_VERSION = "2024-02-29-preview"
@@ -45,8 +45,8 @@ def classify_document(classifier_id, doc_path):
     from azure.ai.documentintelligence import DocumentIntelligenceClient
     from azure.ai.documentintelligence.models import AnalyzeResult
 
-    endpoint = os.environ["AZURE_FORM_RECOGNIZER_ENDPOINT"]
-    key = os.environ["AZURE_FORM_RECOGNIZER_KEY"]
+    endpoint = os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"]
+    key = os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"]
     classifier_id = os.getenv("CLASSIFIER_ID", classifier_id)
 
     document_intelligence_client = DocumentIntelligenceClient(endpoint=endpoint, credential=AzureKeyCredential(key))

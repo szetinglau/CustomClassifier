@@ -5,7 +5,7 @@ DESCRIPTION:
     This sample demonstrates how to upload labeled data to your Azure Blob Storage container and build a custom classifier model.
 
     More details on building a classifier and labeling your data can be found here:
-    https://aka.ms/azsdk/formrecognizer/buildclassifiermodel
+    https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/samples/sample_classify_document.py
 
 USAGE:
     python upload_documents.py

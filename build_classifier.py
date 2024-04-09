@@ -11,17 +11,17 @@ FILE: build_classifier.py
 
 DESCRIPTION:
     This sample demonstrates how to build a classifier model. For this sample, you can use the training
-    documents found in https://aka.ms/azsdk/formrecognizer/sampleclassifierfiles
+    documents found in https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/documentintelligence/azure-ai-documentintelligence/samples/sample_forms/classifier
 
     More details on building a classifier and labeling your data can be found here:
-    https://aka.ms/azsdk/formrecognizer/buildclassifiermodel
+    https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/documentintelligence/azure-ai-documentintelligence/samples/sample_classify_document.py
 
 USAGE:
     python build_classifier.py
 
     Set the environment variables with your own values before running the sample:
-    1) AZURE_FORM_RECOGNIZER_ENDPOINT - the endpoint to your Form Recognizer resource.
-    2) AZURE_FORM_RECOGNIZER_KEY - your Form Recognizer API key
+    1) AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT - the endpoint to your DOCUMENT_INTELLIGENCE resource.
+    2) AZURE_DOCUMENT_INTELLIGENCE_KEY - your DOCUMENT_INTELLIGENCE API key
     3) AZURE_STORAGE_CONNECTION_STRING - The connection string for your Azure Storage Account
     4) AZURE_STORAGE_CONTAINER_NAME - The name of your Azure Blob Storage container
     5) [OPTIONAL] CLASSIFIER_DESCRIPTION - A description for your trained document classifier
@@ -59,8 +59,8 @@ def build_classifier():
 
 def create_clients():
 # [START create_clients]
-    endpoint = os.environ["AZURE_FORM_RECOGNIZER_ENDPOINT"]
-    key = os.environ["AZURE_FORM_RECOGNIZER_KEY"]
+    endpoint = os.environ["AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT"]
+    key = os.environ["AZURE_DOCUMENT_INTELLIGENCE_KEY"]
     connect_str = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
     container_name = os.environ["AZURE_STORAGE_CONTAINER_NAME"]
 
