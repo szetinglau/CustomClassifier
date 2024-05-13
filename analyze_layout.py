@@ -75,7 +75,7 @@ def analyze_layout():
             print(f"\t{file}")
         print("Please visit the following link for more information on supported file types and sizes. \nhttps://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-custom-classifier?view=doc-intel-4.0.0#input-requirements")
     
-    print("Batch upload completed!")
+    print("Batch layout analysis completed!")
 # [END analyze_layout]
 
 def create_ocr_json(ocr_json_file_path, raw_response):

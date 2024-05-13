@@ -28,6 +28,7 @@ Before running the scripts, you need to set up your environment variables. Renam
 - `TRAINING_DOCUMENTS`: The path to your training documents
 - `TESTING_DOCUMENTS`: The path to your testing documents
 - `CLASSIFIER_ID`: The model ID of your Document Intelligence (wait until after running ```build_classifier.py```)
+- `BASE_CLASSIFIER_ID`: The model ID of your base classifier (edit only if you want to perform incremental training on an existing classifier)
 
 Please replace the placeholders with your actual values.  
 <br/>
