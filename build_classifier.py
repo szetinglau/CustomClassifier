@@ -43,18 +43,18 @@ load_dotenv()  # take environment variables from .env.
 
 def build_classifier():
 # [START build_classifier]
-    base_classifier_id = os.environ["BASE_CLASSIFIER_ID"]
-
+    base_classifier_id = os.environ["BASE_CLASSIFIER_ID"] if os.environ["BASE_CLASSIFIER_ID"] else None
+    classifier_description = os.environ["CLASSIFIER_DESCRIPTION"] if os.environ["CLASSIFIER_DESCRIPTION"] else None
     document_model_admin_client, container_client = create_clients()
     container_sas_url = create_container_sas_url(container_client)
 
     poller = document_model_admin_client.begin_build_classifier(
         BuildDocumentClassifierRequest(
             classifier_id=str(uuid.uuid4()),
-            base_classifier_id=base_classifier_id if base_classifier_id else None,
+            base_classifier_id=base_classifier_id,
+            description=classifier_description,
             doc_types= get_doctypes(container_client, container_sas_url),
         )
-        #description=os.environ["CLASSIFIER_DESCRIPTION"]
     )
     result = poller.result()
     print_classifier_results(result)
